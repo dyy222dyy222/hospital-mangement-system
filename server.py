@@ -11,11 +11,9 @@ conf_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'conf')
 app = Flask(__name__, template_folder=tmpl_dir)
 sys.path.insert(1, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'app'))
 import application.doctors
-import application.nurses
 import application.appointments
 import application.medicines
 import application.patient
-import application.admin
 
 
 # Import login details from configuration file.
