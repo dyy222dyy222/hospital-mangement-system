@@ -17,10 +17,9 @@ import application.patient
 
 
 # Import login details from configuration file.
-with open(conf_dir + '/configuration.json') as f:
-  config = json.load(f)
 
-DATABASEURI = "postgresql://" + config['user'] + ":" + config['passphrase'] + "@34.73.36.248/project1" 
+DATABASEURI = 'postgresql://wh2502:25022546@35.196.192.139/proj1part2'
+
 
 engine = create_engine(DATABASEURI)
 
