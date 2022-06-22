@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management System</title>
+    <meta name="description" content="A description of your website">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div id="header">
+
+            <div class="top_banner">
+                <h1>Hospital Management System</h1>
+            </div>
+
+        </div>
+
+        <div id="page_content">
+
+            <div class="left_side_bar">
+
+                <div class="col_1">
+                    <div class="box">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/admin">Admin</a></li>
+                            <li><a href="/doctors">Doctors</a></li>
+                            <li><a href="/nurses">Nurses</a></li>
+                            <li><a href="/appointments">Appointments</a></li>
+                            <li><a href="/medicines">Medicines</a></li>
+                            <li><a href="/patients">Patients</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right_section">
+                <div class="common_content">
+                    <h2>Admin</h2><br />
+                    <hr>
+                    <h4>Departments</h4>
+                    <table class="base_qry_render">
+                        <thead>
+                            <tr>
+                                <th>Department ID</th>
+                                <th>Name</th>
+                                <th>Revenue</th>
+                                <th>Budget</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in dpt %}
+                            <tr>
+                                {% for i in row %}
+                                    <td>{{i}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br /><hr>
+                    <h4>Units</h4>
+                    <table class="base_qry_render">
+                        <thead>
+                            <tr>
+                                <th>Unit ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Capacity</th>
+                                <th>Accessibility</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in unt %}
+                            <tr>
+                                {% for i in row %}
+                                    <td>{{i}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br /><hr>
+                    <form accept-charset="UTF-8" action="/admin_create_doctor" autocomplete="off" method="POST"
+                        target="_blank">
+                        <fieldset>
+                            <legend>Add Doctor:</legend>
+                            <label for="first_name">First Name : </label><input name="first_name" type="text"value="" /> <br />
+                            <label for="last_name">Last Name : </label><input name="last_name" type="text"value="" /> <br />
+                            <label for="email">Email : </label><input name="email" type="text"value="" /> <br />
+                            <label for="contact_number">Contact Number: </label><input name="contact_number" type="text"value="" /> <br />
+                            <label for="dob">DOB : </label><input name="dob" type="date"value="" /> <br />
+                            <label for="hire_date">Hire Date : </label><input name="hire_date" type="date"value="" /> <br />
+                            <label for="gender">Gender : </label><select name="gender"><option value="M">M</option><option value="F">F</option><option value="O">O</option></select><br />
+                            <label for="salary">Salary : </label><input name="salary" type="text"value="" /> <br />
+                            <label for="on_site">On Site : </label><input name="on_site" type="checkbox" value="" /> <br />
+                            <label for="designation">Designation : </label><input name="designation" type="text"value="" /> <br />
+                            <label for="department_id">Department ID : </label><input name="department_id" type="text"value="" /> <br />
+                            <label for="license_number">License Number : </label><input name="license_number" type="text"value="" /> <br />
+                            <label for="doc_type">Doctor Category: </label><input name="doc_type" type="text"value="" /> <br />
+                            <label for="specialization">Specialization : </label><input name="specialization" type="text"value="" /> <br />
+                            <input type="submit" value="Create" onclick="loading();">
+                        </fieldset>
+                    </form>
+                    <br />
+                    <form accept-charset="UTF-8" action="/admin_create_nurse" autocomplete="off" method="POST"
+                        target="_blank">
+                        <fieldset>
+                            <legend>Add Nurse:</legend>
+                            <label for="first_name">First Name : </label><input name="first_name" type="text"value="" /> <br />
+                            <label for="last_name">Last Name : </label><input name="last_name" type="text"value="" /> <br />
+                            <label for="email">Email : </label><input name="email" type="text"value="" /> <br />
+                            <label for="contact_number">Contact Number: </label><input name="contact_number" type="text"value="" /> <br />
+                            <label for="dob">DOB : </label><input name="dob" type="date"value="" /> <br />
+                            <label for="hire_date">Hire Date : </label><input name="hire_date" type="date"value="" /> <br />
+                            <label for="gender">Gender : </label><select name="gender"><option value="M">M</option><option value="F">F</option><option value="O">O</option></select><br />
+                            <label for="salary">Salary : </label><input name="salary" type="text"value="" /> <br />
+                            <label for="on_site">On Site : </label><input name="on_site" type="checkbox" value="" /> <br />
+                            <label for="designation">Designation : </label><input name="designation" type="text"value="" /> <br />
+                            <label for="department_id">Department ID : </label><input name="department_id" type="text"value="" /> <br />
+                            <label for="shift">Shift : </label><select name="shift"><option value="M">M</option><option value="N">N</option></select><br />
+                            <label for="care_specialization">Care Specialization : </label><input name="care_specialization" type="text"value="" /> <br />
+                            <input type="submit" value="Create" onclick="loading();">
+                        </fieldset>
+                    </form>
+                    <br />
+                    <form accept-charset="UTF-8" action="/admin_create_assoc" autocomplete="off" method="POST"
+                    target="_blank">
+                    <fieldset>
+                        <legend>Book Unit for Patient:</legend>
+                        <label for="patient_id">Patient ID : </label><input name="patient_id" type="text"value="" /> <br />
+                        <label for="unit_id">Unit ID : </label><input name="unit_id" type="text"value="" /> <br />
+                        <label for="time_from">Time From : </label><input name="time_from" type="datetime-local"value="" /> <br />
+                        <label for="time_to">Time To : </label><input name="time_to" type="datetime-local"value="" /> <br />
+                        <label for="employee_id">Employee ID (Nurse) : </label><input name="employee_id" type="text"value="" /> <br />
+                        <input type="submit" value="Book" onclick="loading();">
+                    </fieldset>
+                </form>
+                <br />
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management System</title>
+    <meta name="description" content="A description of your website">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div id="header">
+
+            <div class="top_banner">
+                <h1>Hospital Management System</h1>
+            </div>
+
+        </div>
+
+        <div id="page_content">
+
+            <div class="left_side_bar">
+
+                <div class="col_1">
+                    <div class="box">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/admin">Admin</a></li>
+                            <li><a href="/doctors">Doctors</a></li>
+                            <li><a href="/nurses">Nurses</a></li>
+                            <li><a href="/appointments">Appointments</a></li>
+                            <li><a href="/medicines">Medicines</a></li>
+                            <li><a href="/patients">Patients</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right_section">
+                <div class="common_content">
+                    <h2>Appointment View</h2>
+                    <hr>
+                    {% for item in apt%}
+                    <table class="base_qry_render">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                    {% for key, value in item.items() %}
+                                        <tr>
+                                            <td>{{key}}</td>
+                                            <td>{{value}}</td>
+                                        </tr>
+                                    {% endfor %}
+                        </tbody>
+                    </table>
+                    <br />
+                    {% endfor %}
+                <h4>Medicines Prescribed</h4>
+                <ul>
+                {% for item in vmeds %}
+                    <li>For Appointment {{item[0]}} - Medicine : {{item[3]}}</li>
+                {% endfor %}
+                </ul>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

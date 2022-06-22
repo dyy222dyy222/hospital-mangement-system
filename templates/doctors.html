@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management System</title>
+    <meta name="description" content="A description of your website">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div id="header">
+
+            <div class="top_banner">
+                <h1>Hospital Management System</h1>
+            </div>
+
+        </div>
+
+        <div id="page_content">
+
+            <div class="left_side_bar">
+
+                <div class="col_1">
+                    <div class="box">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/admin">Admin</a></li>
+                            <li><a href="/doctors">Doctors</a></li>
+                            <li><a href="/nurses">Nurses</a></li>
+                            <li><a href="/appointments">Appointments</a></li>
+                            <li><a href="/medicines">Medicines</a></li>
+                            <li><a href="/patients">Patients</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right_section">
+                <div class="common_content">
+                    <h2>Doctors</h2>
+                    <hr>
+                    <form accept-charset="UTF-8" action="/doctors" autocomplete="off" method="POST"
+                        target="_blank">
+                        <fieldset>
+                            <legend>Search Doctors:</legend> 
+                                <label for="first_name">First Name : </label><input name="first_name" type="text"value="" /> <br />
+                                <label for="email">Email : </label> <input name="email"type="text" value="" /> <br />
+                                <label for="department">Department : </label><input name="department" type="text" value="" /> <br />
+                                <label for="sensitive">Sensitive Search : </label><input type="checkbox" name="sensitive" /> <br />
+                                <label for="recent_consult">Recent Consult : </label><input type="checkbox" name="recent_consult" /> <br />
+                                <label for="sort">Sort : </label><input type="checkbox" name="sort" /> <br />
+                                <input type="submit" value="Search" onclick="loading();">
+                        </fieldset>
+                    </form>
+                    <br />
+                    <table class="base_qry_render">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Cell Number</th>
+                                <th>Designation</th>
+                                <th>Sex</th>
+                                <th>Department</th>
+                                <th>Specialization</th>
+                                <th>DOB</th>
+                                <th>Hire Date</th>
+                                <th>Salary</th>
+                                <th>License Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                                {% for row in data %}
+                                <tr>
+                                    {% for element in row %}
+                                    <td>{{element}}</td>
+                                    {% endfor %}    
+                                </tr>
+                                {% endfor %}
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

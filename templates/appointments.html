@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management System</title>
+    <meta name="description" content="A description of your website">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div id="header">
+
+            <div class="top_banner">
+                <h1>Hospital Management System</h1>
+            </div>
+
+        </div>
+
+        <div id="page_content">
+
+            <div class="left_side_bar">
+
+                <div class="col_1">
+                    <div class="box">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/admin">Admin</a></li>
+                            <li><a href="/doctors">Doctors</a></li>
+                            <li><a href="/nurses">Nurses</a></li>
+                            <li><a href="/appointments">Appointments</a></li>
+                            <li><a href="/medicines">Medicines</a></li>
+                            <li><a href="/patients">Patients</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right_section">
+                <div class="common_content">
+                    <h2>Appointments</h2>
+                    <hr>
+                    <form accept-charset="UTF-8" action="/search_appointments" autocomplete="off" method="POST"
+                        target="_blank">
+                        <fieldset>
+                            <legend>Search for Appointments:</legend> 
+                            <label for="consult_id">Appointment ID : </label><input name="consult_id" type="text"value="" /> <br />
+                            <label for="patient_id">Patient ID : </label> <input name="patient_id"type="text" value="" /> <br />
+                            <label for="limit">Show Only Latest Appointment : </label><input type="checkbox" name="limit" /> <br />
+                            <input type="submit" value="Search" onclick="loading();">
+                        </fieldset>
+                    </form>
+                    <br /><hr />
+                    <form accept-charset="UTF-8" action="/book_appointments" autocomplete="off" method="POST"
+                    target="_blank">
+                    <fieldset>
+                        <legend>Book New Appointment:</legend> 
+                        <label for="patient_id">Patient ID : </label> <input name="patient_id"type="text" value="" /> <br />
+                        <label for="consult_from">Start Time :</label><input name="consult_from" type="datetime-local" value="" /> <br />
+                        <label for="consult_to">End Time: </label><input name="consult_to" type="datetime-local" /> <br />
+                        <label for="consult_type">End Time: </label><select name="consult_type"><option value="VISIT">VISIT</option><option value="SURGERY">SURGERY</option></select><br />
+                        <label for="employee_id">(Assigned) Doctor ID: </label><input name="employee_id" type="text" /> <br />
+                        <input type="submit" value="Book" onclick="loading();">
+                    </fieldset>
+                    </form>
+                    <br /><hr />
+                    <form accept-charset="UTF-8" action="/update_appointments" autocomplete="off" method="POST"
+                    target="_blank">
+                    <fieldset>
+                        <legend>Post Visit Appointment Update:</legend> 
+                        <label for="consult_id">Appointment ID : </label><input name="consult_id" type="text"value="" /> <br />
+                        <label for="amount">Outstanding Amount : </label> <input name="amount"type="text" value="" /> <br />
+                        <label for="med_prescribed">Medicines Prescribed : </label><input type="text" name="med_prescribed" /> <br />
+                        <input type="submit" value="Update" onclick="loading();">
+                    </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

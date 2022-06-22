@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital Management System</title>
+    <meta name="description" content="A description of your website">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div id="header">
+
+            <div class="top_banner">
+                <h1>Hospital Management System</h1>
+            </div>
+
+        </div>
+
+        <div id="page_content">
+
+            <div class="left_side_bar">
+
+                <div class="col_1">
+                    <div class="box">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/admin">Admin</a></li>
+                            <li><a href="/doctors">Doctors</a></li>
+                            <li><a href="/nurses">Nurses</a></li>
+                            <li><a href="/appointments">Appointments</a></li>
+                            <li><a href="/medicines">Medicines</a></li>
+                            <li><a href="/patients">Patients</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right_section">
+                <div class="common_content">
+                    <h2>Medicines</h2>
+                    <hr>
+                    <form accept-charset="UTF-8" action="/find_patients" autocomplete="off" method="POST"
+                        target="_blank">
+                        <fieldset>
+                            <legend>Find Patients:</legend> 
+                                <label for="patient_id">Patient ID : </label> <input name="name"type="patient_id" value="" /> <br />
+                                <label for="first_name">First Name : </label><input name="first_name" type="text" value="" /> <br />
+                                <label for="last_name">Last Name : </label><input type="text" name="last_name" /> <br />
+                                <label for="insurance_id">Insurance ID : </label><input name="insurance_id" type="text" value="" /> <br />
+                                <input type="submit" value="Find" onclick="loading();">
+                        </fieldset>
+                    </form>
+                    <form accept-charset="UTF-8" action="/add_patients" autocomplete="off" method="POST"
+                    target="_blank">
+                    <fieldset>
+                        <legend>Add Patient:</legend> 
+                            <label for="first_name">First Name : </label><input name="first_name" type="text" value="" /> <br />
+                            <label for="last_name">Last Name : </label><input type="text" name="last_name" /> <br />
+                            <label for="insurance_id">Insurance ID : </label><input name="insurance_id" type="text" value="" /> <br />
+                            <label for="dob">DOB: </label><input name="dob" type="date" /> <br />
+                            <label for="gender">Gender: </label><select name="gender"><option value="M">M</option><option value="F">F</option><option value="O">O</option></select><br />
+                            <input type="submit" value="Create" onclick="loading();">
+                    </fieldset>
+                </form>
+                    <br />
+                    
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
